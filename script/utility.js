@@ -1,7 +1,8 @@
 
 
-function getElementInnerTextById(elementId){
-  const totalSet = document.getElementById().innerText;
-  const result = parseInt(totalSet);
-  return result;
+function getElementConvertValue(elementId){
+  const element = document.getElementById(elementId).innerText;
+  const result = parseInt(element);
+  return result
 }
+
