@@ -68,25 +68,20 @@ for (const btn of allBtn){
     if(sitCondition >= 3 ){
       couponButton.removeAttribute('disabled');
     }
-
+    
 
     // Next button modal button condition
     const phoneNumber = document.getElementById('phoneNumber').value;
-    console.log(phoneNumber);
+    let numberToText = phoneNumber.toString();
 
     const sitSelected = getElementConvertValue('showSet');
-    console.log(sitSelected);
-
-    const modalButton = document.getElementById('nextButton');
-    
-    // sitCondition >= 0
-    
-    if(phoneNumber.length == 1){
-
-      console.log('button work')
-
+    const modalButton = document.getElementById('nextButton');    
+        
+    if(sitCondition >= 0 && numberToText.length >= 1 ){
       modalButton.removeAttribute('disabled');
     }
+
+
 
   })
 }
