@@ -6,3 +6,8 @@ function getElementConvertValue(elementId){
   return result
 }
 
+function setElementInnerByValue(elementId, value){
+  const element = document.getElementById(elementId);
+  element.innerText = value;
+}
+

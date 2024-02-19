@@ -1,23 +1,17 @@
+
 const allBtn = document.getElementsByClassName('add-btn');
 
-let count = 40;
-let set = 0;
 let price = 0;
-
-
-function ticketContinue(){
-
-}
-
+// let number = 0;
 
 for (const btn of allBtn){
+  
   btn.addEventListener('click', function(e){
+
     e.target.setAttribute('disabled', true);
     e.target.classList.add('disabled:bg-[#1DD100]')
     e.target.classList.add('disabled:text-black')
 
-    count = count - 1;
-    set = set + 1 ; 
     price = price + 550;
 
     const setText = e.target.innerText;
@@ -29,6 +23,7 @@ for (const btn of allBtn){
     li3.innerText = 550;
 
     const ul = document.createElement('ul');
+    ul.setAttribute('id', 'hide');
 
     ul.classList.add('flex');
     ul.classList.add('justify-between');
@@ -41,37 +36,34 @@ for (const btn of allBtn){
     const priceContainer = document.getElementById('priceContainer');
     priceContainer.appendChild(ul);
 
+    // totalSeat decrease 
+    const totalSeat = getElementConvertValue('totalSeat');
+    let decSet = totalSeat - 1; 
+    setElementInnerByValue('totalSeat', decSet)
+
+    // showSeat increase    
+    const showSeat = getElementConvertValue('showSet');    
+    let incSet = showSeat + 1; 
+    setElementInnerByValue('showSet', incSet);
+
+    // sitCondition select 4 sit    
+    const sitCondition = getElementConvertValue('showSet');
     
-
-
-
-
-
-
-   
-
-
-    const totalSet = document.getElementById('totalSeat').innerText = count;
-    const showSet = document.getElementById('showSet').innerText = set;
+    // total price      
     const totalPrice = document.getElementById('totalPrice').innerText = price;
-    const grandTotal = document.getElementById('grandTotal').innerText = totalPrice;
 
-    if(showSet === 4){
-      alert('1 person booking total 4 seat! 🙂')
-    }
-    
-    
-    
-    
-    
-    // e.target.removeAttribute('disabled', true)   
-    
-    
+    // grand total price  
+    document.getElementById('grandTotal').innerText = totalPrice;
+
+    if(sitCondition === 4){
+      alert('1 person booking total 4 seat! 🙂');
+      disabledSet()
+    }    
+
   })
 }
 
 document.getElementById('couponId').addEventListener('click', function(e){
-
 
   const couponCode = document.getElementById('coupon').value;
   
@@ -79,16 +71,17 @@ document.getElementById('couponId').addEventListener('click', function(e){
 
   const grandTotal = getElementConvertValue('grandTotal');
   const discount = grandTotal * 15 / 100;
-  const round = discount.toFixed(2)
+  const round = Math.round(discount);
   const discountPrice = grandTotal - round;
   document.getElementById('grandTotal').innerText = discountPrice; 
+
   e.target.parentNode.classList.add('hidden');
 
   }else if(couponCode == 'Couple 20'){
 
     const grandTotal = getElementConvertValue('grandTotal');
     const discount = grandTotal * 20 / 100;
-    const round = discount.toFixed(2)
+    const round = Math.round(discount);
     const discountPrice = grandTotal - round;
     document.getElementById('grandTotal').innerText = discountPrice; 
 
@@ -100,3 +93,62 @@ document.getElementById('couponId').addEventListener('click', function(e){
   }
 
 })
+
+function disabledSet(){
+
+  for (const btn of allBtn){
+    btn.setAttribute('disabled', true);
+  }
+}
+
+
+
+// nextButton
+const nextButton = document.getElementById('nextButton');
+nextButton.addEventListener('click', function(){
+
+  continueSet();
+
+})
+
+
+// continueSet function
+function continueSet(){
+
+  // reset show Set value to 0
+  setElementInnerByValue('showSet', 0);
+
+  // reset total Set value to 40
+  setElementInnerByValue('totalSeat', 40);
+  
+  // reset total price value to 0
+  setElementInnerByValue('totalPrice', 0);
+
+  // reset grand total price value to 0
+  setElementInnerByValue('grandTotal', 0);
+  
+  // hidden price section
+  const hide = document.getElementById('hide');
+  hide.classList.add('hidden')
+
+  // var hided = document.getElementsByClassName('hide'); 
+  
+  
+
+  
+  const allBtn = document.getElementsByClassName('add-btn'); 
+  for (const btn of allBtn){
+    btn.removeAttribute('disabled', true);
+    btn.classList.remove('disabled:bg-[#1DD100]')
+    btn.classList.remove('disabled:text-black')
+  }
+  
+
+
+
+
+
+
+}
+
+
