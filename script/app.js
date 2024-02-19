@@ -10,7 +10,7 @@ for (const btn of allBtn){
     // sitCondition select 4 sit    
     const sitCondition = getElementConvertValue('showSet');
 
-    if(sitCondition === 4){
+    if(sitCondition === 3){
       alert('1 person booking total 4 seat! 🙂');
       disabledSet();
     } 
@@ -21,7 +21,7 @@ for (const btn of allBtn){
 
     e.target.setAttribute('disabled', true);
     e.target.classList.add('disabled:bg-[#1DD100]')
-    e.target.classList.add('disabled:text-black')
+    e.target.classList.add('disabled:text-white')
 
     price = price + 550;
 
@@ -62,10 +62,30 @@ for (const btn of allBtn){
     // grand total price  
     document.getElementById('grandTotal').innerText = totalPrice;
 
-    const cp = document.getElementById('coupon');
+    // coupon code button condition
+    const couponButton = document.getElementById('couponId');
 
-    if(sitCondition >= 1 ){
-      cp.removeAttribute('disabled');
+    if(sitCondition >= 3 ){
+      couponButton.removeAttribute('disabled');
+    }
+
+
+    // Next button modal button condition
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    console.log(phoneNumber);
+
+    const sitSelected = getElementConvertValue('showSet');
+    console.log(sitSelected);
+
+    const modalButton = document.getElementById('nextButton');
+    
+    // sitCondition >= 0
+    
+    if(phoneNumber.length == 1){
+
+      console.log('button work')
+
+      modalButton.removeAttribute('disabled');
     }
 
   })
@@ -74,8 +94,6 @@ for (const btn of allBtn){
 document.getElementById('couponId').addEventListener('click', function(e){
 
   const couponCode = document.getElementById('coupon').value; 
-  
-  
   
   const p1 = document.createElement('p');
   p1.innerText = 'Discount Price';  
@@ -93,37 +111,29 @@ document.getElementById('couponId').addEventListener('click', function(e){
   newDiv.appendChild(p1);
   newDiv.appendChild(p2);
   const discountPriceDiv = document.getElementById('addNewDiv');
-  discountPriceDiv.appendChild(newDiv);
-
-
-  // console.log(e.target.parentNode)
 
  
   if(couponCode == 'NEW15' ){   
 
-  const grandTotal = getElementConvertValue('grandTotal');
-  const discount = grandTotal * 15 / 100; 
-
-  span.innerText = discount; 
-
-  const round = Math.round(discount);
-  const discountPrice = grandTotal - round;
-  document.getElementById('grandTotal').innerText = discountPrice; 
-
-  e.target.parentNode.classList.add('hidden');
+    const grandTotal = getElementConvertValue('grandTotal');
+    const discount = grandTotal * 15 / 100; 
+    span.innerText = discount; 
+    const round = Math.round(discount);
+    const discountPrice = grandTotal - round;
+    document.getElementById('grandTotal').innerText = discountPrice; 
+    e.target.parentNode.classList.add('hidden');  
+    discountPriceDiv.appendChild(newDiv);
 
   }else if(couponCode == 'Couple 20'){
 
     const grandTotal = getElementConvertValue('grandTotal');
     const discount = grandTotal * 20 / 100;
-
     span.innerText = discount; 
-
     const round = Math.round(discount);
     const discountPrice = grandTotal - round;
     document.getElementById('grandTotal').innerText = discountPrice; 
-
-    e.target.parentNode.classList.add('hidden');
+    e.target.parentNode.classList.add('hidden');        
+    discountPriceDiv.appendChild(newDiv);
 
   }else{
     alert('sorry wrong coupon code please type valid coupon code again!')
@@ -136,6 +146,7 @@ function disabledSet(){
 
   for (const btn of allBtn){
     btn.setAttribute('disabled', true);
+
   }
 }
 

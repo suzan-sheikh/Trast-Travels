@@ -78,7 +78,7 @@
         <div class="navbar-end">
           <div class="flex gap-2 bg-[#72e26152] px-4 py-2 rounded-lg">
             <a class="font-bold text-[#1DD100]" href="#">Bus</a>
-            <img src="./images/bus-icon.png" alt="bus">
+            <img class="cursor-pointer" src="./images/bus-icon.png" alt="bus">
           </div>
           <!-- btn area -->
           <!-- <a class="btn bg-[#FF4240] text-white">Bus</a> -->
@@ -99,7 +99,7 @@
               <p class="max-w-[520px] text-center">
                 We’re having a race, y’see: Man versus Train, albeit with me on the bus. The ultimate destination is El’s auntie’s pub in our bus.
               </p>              
-              <a class="btn border-0 text-black hover:text-white bg-[#1DD100] cursor-pointer my-6"  href="#ticket">Register Now</a>
+              <a class="btn border-0 text-black hover:text-white bg-[#1DD100] cursor-pointer my-6"  href="#ticket">Buy Tickets</a>
 
               <div class="flex flex-col md:flex-row gap-4">
                 <div class="bg-white p-6 flex gap-2 rounded-3xl border-b-4 border-[#1DD100]">
@@ -330,8 +330,8 @@
 
                 <div id="addNewDiv" class="rounded-xl bg-[#ffffff]">
                   <div id="discountPrice" class="flex justify-between items-center">
-                    <input disabled id="coupon" class="w-36 p-4 outline-none rounded-xl" type="text" name="" id="" placeholder="Have any coupon?">
-                    <button id="couponId" class="bg-[#1DD100] text-white rounded-md py-2 px-3">Apply</button>
+                    <input id="coupon" class="w-36 p-4 outline-none rounded-xl" type="text" name="" id="" placeholder="Have any coupon?">
+                    <button disabled id="couponId" class="bg-[#1DD100] text-white rounded-md py-2 px-3">Apply</button>
                   </div>
                 </div>
 
@@ -347,13 +347,13 @@
                 <br> <br>
 
                 <h2 class="font-bold">Phone Number*</h2><br>
-                <input type="number" placeholder="Enter your phone number" class="input input-bordered input-md w-full max-w-xs" />
+                <input id="phoneNumber" type="number" placeholder="Enter your phone number" class="input input-bordered input-md w-full max-w-xs" />
                 <br> <br>
                 <h2 class="font-bold">Email ID</h2><br>
                 <input type="email" placeholder="Enter your email id" class="input input-bordered input-md w-full max-w-xs" />
               </div> 
               <!-- Open the modal using ID.showModal() method -->
-              <button id="nextButton" class="btn bg-[#1DD100] w-full text-white" onclick="my_modal_5.showModal()">Next</button>
+              <button disabled id="nextButton" class="btn bg-[#1DD100] w-full text-white" onclick="my_modal_5.showModal()">Next</button>
               <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box flex flex-col justify-center items-center">
                   <img src="./images/success.png" alt="img">
