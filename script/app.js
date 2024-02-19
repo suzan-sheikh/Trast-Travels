@@ -19,7 +19,6 @@ for (const btn of allBtn){
       return;
     }
 
-    console.log(sitCondition);
     e.target.setAttribute('disabled', true);
     e.target.classList.add('disabled:bg-[#1DD100]')
     e.target.classList.add('disabled:text-black')
@@ -75,11 +74,77 @@ for (const btn of allBtn){
 document.getElementById('couponId').addEventListener('click', function(e){
 
   const couponCode = document.getElementById('coupon').value;
+
+  
+  
+  
+  
+  const p1 = document.createElement('p');
+  p1.innerText = 'discount Price'  
+  const p2 = document.createElement('p'); 
+  p2.innerText = 'BDT'
+  
+  const span = document.createElement('span');
+  p2.appendChild(span)
+  
+  console.log(p1, p2, span)
+
+
+
+
+  const discountPriceDiv = document.getElementById('discountPrice');
+
+  const creatDiv = document.createElement('div');
+    // li2.innerText = 'Economy';
+    // const li3 = document.createElement('li');
+    // li3.innerText = 550;
+
+    // const ul = document.createElement('ul');
+
+    // ul.classList.add('flex');
+    // ul.classList.add('justify-between');
+
+
+    // ul.appendChild(li);
+    // ul.appendChild(li2);
+    // ul.appendChild(li3);
+    
+    // const priceContainer = document.getElementById('priceContainer');
+    // priceContainer.appendChild(ul);
+
+
+
+
+
+   
+
+      // <div class="flex justify-between py-4">
+    //   <p class="font-bold">Total Price</p>
+    //   <p class="font-bold">BDT <span id="totalPrice">0</span></p>
+    // </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   if(couponCode == 'NEW15' ){   
 
   const grandTotal = getElementConvertValue('grandTotal');
-  const discount = grandTotal * 15 / 100;
+  const discount = grandTotal * 15 / 100; 
+
+  span.innerText = discount; 
+
   const round = Math.round(discount);
   const discountPrice = grandTotal - round;
   document.getElementById('grandTotal').innerText = discountPrice; 
@@ -90,6 +155,9 @@ document.getElementById('couponId').addEventListener('click', function(e){
 
     const grandTotal = getElementConvertValue('grandTotal');
     const discount = grandTotal * 20 / 100;
+
+    span.innerText = discount; 
+
     const round = Math.round(discount);
     const discountPrice = grandTotal - round;
     document.getElementById('grandTotal').innerText = discountPrice; 
@@ -109,4 +177,8 @@ function disabledSet(){
     btn.setAttribute('disabled', true);
   }
 }
+
+
+
+
 
