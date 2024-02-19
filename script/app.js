@@ -69,20 +69,6 @@ for (const btn of allBtn){
       couponButton.removeAttribute('disabled');
     }
     
-
-    // Next button modal button condition
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    let numberToText = phoneNumber.toString();
-
-    const sitSelected = getElementConvertValue('showSet');
-    const modalButton = document.getElementById('nextButton');    
-        
-    if(sitCondition >= 0 && numberToText.length >= 1 ){
-      modalButton.removeAttribute('disabled');
-    }
-
-
-
   })
 }
 
@@ -144,8 +130,3 @@ function disabledSet(){
 
   }
 }
-
-
-
-
-
