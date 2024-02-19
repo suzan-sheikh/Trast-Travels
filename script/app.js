@@ -2,12 +2,24 @@
 const allBtn = document.getElementsByClassName('add-btn');
 
 let price = 0;
-// let number = 0;
 
 for (const btn of allBtn){
   
   btn.addEventListener('click', function(e){
 
+    // sitCondition select 4 sit    
+    const sitCondition = getElementConvertValue('showSet');
+
+    if(sitCondition === 4){
+      alert('1 person booking total 4 seat! 🙂');
+      disabledSet();
+    } 
+
+    if(sitCondition >= 4){
+      return;
+    }
+
+    console.log(sitCondition);
     e.target.setAttribute('disabled', true);
     e.target.classList.add('disabled:bg-[#1DD100]')
     e.target.classList.add('disabled:text-black')
@@ -23,7 +35,6 @@ for (const btn of allBtn){
     li3.innerText = 550;
 
     const ul = document.createElement('ul');
-    ul.setAttribute('id', 'hide');
 
     ul.classList.add('flex');
     ul.classList.add('justify-between');
@@ -45,9 +56,6 @@ for (const btn of allBtn){
     const showSeat = getElementConvertValue('showSet');    
     let incSet = showSeat + 1; 
     setElementInnerByValue('showSet', incSet);
-
-    // sitCondition select 4 sit    
-    const sitCondition = getElementConvertValue('showSet');
     
     // total price      
     const totalPrice = document.getElementById('totalPrice').innerText = price;
@@ -55,10 +63,11 @@ for (const btn of allBtn){
     // grand total price  
     document.getElementById('grandTotal').innerText = totalPrice;
 
-    if(sitCondition === 4){
-      alert('1 person booking total 4 seat! 🙂');
-      disabledSet()
-    }    
+    const cp = document.getElementById('coupon');
+
+    if(sitCondition >= 1 ){
+      cp.removeAttribute('disabled');
+    }
 
   })
 }
@@ -100,55 +109,4 @@ function disabledSet(){
     btn.setAttribute('disabled', true);
   }
 }
-
-
-
-// nextButton
-const nextButton = document.getElementById('nextButton');
-nextButton.addEventListener('click', function(){
-
-  continueSet();
-
-})
-
-
-// continueSet function
-function continueSet(){
-
-  // reset show Set value to 0
-  setElementInnerByValue('showSet', 0);
-
-  // reset total Set value to 40
-  setElementInnerByValue('totalSeat', 40);
-  
-  // reset total price value to 0
-  setElementInnerByValue('totalPrice', 0);
-
-  // reset grand total price value to 0
-  setElementInnerByValue('grandTotal', 0);
-  
-  // hidden price section
-  const hide = document.getElementById('hide');
-  hide.classList.add('hidden')
-
-  // var hided = document.getElementsByClassName('hide'); 
-  
-  
-
-  
-  const allBtn = document.getElementsByClassName('add-btn'); 
-  for (const btn of allBtn){
-    btn.removeAttribute('disabled', true);
-    btn.classList.remove('disabled:bg-[#1DD100]')
-    btn.classList.remove('disabled:text-black')
-  }
-  
-
-
-
-
-
-
-}
-
 
